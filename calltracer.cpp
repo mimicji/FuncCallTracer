@@ -163,7 +163,10 @@ at_return(app_pc instr_addr, app_pc target_addr)
 {
     void *drcontext = dr_get_current_drcontext();
     tls_t *tls_data = (tls_t *)drmgr_get_tls_field(drcontext, tls_idx);
+
     file_t f = tls_data->call_trace_file;
+    tls_data->stack_depth--;
+
     dr_mcontext_t mc = { sizeof(mc), DR_MC_CONTROL /*only need xsp*/ };
     dr_get_mcontext(drcontext, &mc);
     print_indentation(f, tls_data->stack_depth);
@@ -179,8 +182,6 @@ at_return(app_pc instr_addr, app_pc target_addr)
                 "=c" (cpu_id)
                 :: "memory");
     dr_fprintf(f, "  Timestamp=%llu, CPU_ID=%u\n", tsc, cpu_id);
-
-    tls_data->stack_depth--;
 }
 
 static dr_emit_flags_t

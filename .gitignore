@@ -1,3 +1,7 @@
+# This project
+FuncCallTracer.sh
+build/
+
 # Prerequisites
 *.d
 
