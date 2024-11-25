@@ -11,7 +11,7 @@ FuncCallTracer is a simple yet powerful function call tracer that records functi
 ## Dependencies
 
 - Unix-based operating system
-- DynamoRIO (version >= 9.0.0)
+- DynamoRIO (version >= [11.0.0](https://github.com/DynamoRIO/dynamorio/releases/download/release_11.0.0/DynamoRIO-Linux-11.0.0.tar.gz))
 - libunwind-dev
 
 ## Usage
